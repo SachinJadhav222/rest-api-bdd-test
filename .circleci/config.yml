@@ -7,7 +7,7 @@ jobs:
       name: maven/default
     steps:
       - checkout
-      - maven/with-cache:
+      - mvn/with-cache:
           steps:
             - run: mvn clean install
   verify:
@@ -15,7 +15,7 @@ jobs:
       name: maven/default
     steps:
       - checkout
-      - maven/with-cache:
+      - mvn/with-cache:
           steps:
             - run: mvn verify
   test:
@@ -23,7 +23,7 @@ jobs:
       name: maven/default
     steps:
       - checkout
-      - maven/with-cache:
+      - mvn/with-cache:
           steps:
             - run: mvn test
 workflows:
