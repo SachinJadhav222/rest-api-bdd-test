@@ -9,8 +9,15 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <property>
+            <maven.compiler.source>8</maven.compiler.source>
+            <maven.compiler.target>8</maven.compiler.target>
+        </property>
+        <property>
+            <sonar.projectKey>SachinJadhav222_rest-api-bdd-test</sonar.projectKey>
+            <sonar.organization>sachinjadhav222</sonar.organization>
+            <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        </property>
     </properties>
     <dependencies>
 
