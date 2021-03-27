@@ -1,5 +1,6 @@
 package utility;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class RandomTestData {
@@ -24,6 +25,11 @@ public class RandomTestData {
     public static String geEmail(){
         String generatedString= RandomStringUtils.randomAlphabetic(3);
         return (generatedString+"gmail.com");
+    }
+
+    public static JSONPObject getPayload(){
+
+        return null;
     }
 
 }

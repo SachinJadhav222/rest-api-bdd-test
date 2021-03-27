@@ -25,4 +25,17 @@ public class Utils{
 
     }
 
+    public static String getSchemaFilePath(String BASE_PATH){
+        String jsonSchemaFilePath=null;
+        if(BASE_PATH.equalsIgnoreCase("/users")){
+            jsonSchemaFilePath="src/main/resources/json-schema/users-schema.json";
+        }else if(BASE_PATH.equalsIgnoreCase("./posts")){
+            jsonSchemaFilePath="src/main/resources/json-schema/post-schema.json";
+        }else{
+            jsonSchemaFilePath="src/main/resources/json-schema/comments-schema.json";
+        }
+        return jsonSchemaFilePath;
+
+    }
+
 }

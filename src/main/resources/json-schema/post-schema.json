@@ -1,0 +1,409 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "posts": [
+        {
+          "id": 1,
+          "title": "json-server",
+          "author": "typicode"
+        },
+        {
+          "userId": 1,
+          "id": 1,
+          "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+          "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+        },
+        {
+          "userId": 1,
+          "id": 2,
+          "title": "qui est esse",
+          "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+        },
+        {
+          "userId": 1,
+          "id": 3,
+          "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+          "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
+        },
+        {
+          "id": 4
+        },
+        {
+          "title": "JohnxP",
+          "body": "JohnNnW",
+          "id": 5
+        },
+        {
+          "title": "Johnvr",
+          "body": "JohnPUE",
+          "id": 6
+        },
+        {
+          "title": "sac123",
+          "body": "sac-body",
+          "id": 7
+        },
+        {
+          "title": "sac1231",
+          "body": "sac-body2",
+          "id": 8
+        },
+        {
+          "title": "Johnmd",
+          "body": "JohnNil",
+          "id": 9
+        }
+      ],
+      "comments": [
+        {
+          "id": 1,
+          "body": "some comment",
+          "postId": 1
+        }
+      ],
+      "profile": {
+        "name": "typicode"
+      }
+    }
+  ],
+  "required": [
+    "posts",
+    "comments",
+    "profile"
+  ],
+  "properties": {
+    "posts": {
+      "$id": "#/properties/posts",
+      "type": "array",
+      "title": "The posts schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "id": 1,
+            "title": "json-server",
+            "author": "typicode"
+          },
+          {
+            "userId": 1,
+            "id": 1,
+            "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+            "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+          }
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/posts/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/posts/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "id": 1,
+                "title": "json-server",
+                "author": "typicode"
+              }
+            ],
+            "required": [
+              "id",
+              "title",
+              "author"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/properties/posts/items/anyOf/0/properties/id",
+                "type": "integer",
+                "title": "The id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  1
+                ]
+              },
+              "title": {
+                "$id": "#/properties/posts/items/anyOf/0/properties/title",
+                "type": "string",
+                "title": "The title schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "json-server"
+                ]
+              },
+              "author": {
+                "$id": "#/properties/posts/items/anyOf/0/properties/author",
+                "type": "string",
+                "title": "The author schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "typicode"
+                ]
+              }
+            },
+            "additionalProperties": true
+          },
+          {
+            "$id": "#/properties/posts/items/anyOf/1",
+            "type": "object",
+            "title": "The second anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "userId": 1,
+                "id": 1,
+                "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+              }
+            ],
+            "required": [
+              "userId",
+              "id",
+              "title",
+              "body"
+            ],
+            "properties": {
+              "userId": {
+                "$id": "#/properties/posts/items/anyOf/1/properties/userId",
+                "type": "integer",
+                "title": "The userId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  1
+                ]
+              },
+              "id": {
+                "$id": "#/properties/posts/items/anyOf/1/properties/id",
+                "type": "integer",
+                "title": "The id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  1
+                ]
+              },
+              "title": {
+                "$id": "#/properties/posts/items/anyOf/1/properties/title",
+                "type": "string",
+                "title": "The title schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+                ]
+              },
+              "body": {
+                "$id": "#/properties/posts/items/anyOf/1/properties/body",
+                "type": "string",
+                "title": "The body schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+                ]
+              }
+            },
+            "additionalProperties": true
+          },
+          {
+            "$id": "#/properties/posts/items/anyOf/2",
+            "type": "object",
+            "title": "The third anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "id": 4
+              }
+            ],
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/properties/posts/items/anyOf/2/properties/id",
+                "type": "integer",
+                "title": "The id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  4
+                ]
+              }
+            },
+            "additionalProperties": true
+          },
+          {
+            "$id": "#/properties/posts/items/anyOf/3",
+            "type": "object",
+            "title": "The fourth anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "title": "JohnxP",
+                "body": "JohnNnW",
+                "id": 5
+              }
+            ],
+            "required": [
+              "title",
+              "body",
+              "id"
+            ],
+            "properties": {
+              "title": {
+                "$id": "#/properties/posts/items/anyOf/3/properties/title",
+                "type": "string",
+                "title": "The title schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "JohnxP"
+                ]
+              },
+              "body": {
+                "$id": "#/properties/posts/items/anyOf/3/properties/body",
+                "type": "string",
+                "title": "The body schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "JohnNnW"
+                ]
+              },
+              "id": {
+                "$id": "#/properties/posts/items/anyOf/3/properties/id",
+                "type": "integer",
+                "title": "The id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  5
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "comments": {
+      "$id": "#/properties/comments",
+      "type": "array",
+      "title": "The comments schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "id": 1,
+            "body": "some comment",
+            "postId": 1
+          }
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/comments/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/comments/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "id": 1,
+                "body": "some comment",
+                "postId": 1
+              }
+            ],
+            "required": [
+              "id",
+              "body",
+              "postId"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/properties/comments/items/anyOf/0/properties/id",
+                "type": "integer",
+                "title": "The id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  1
+                ]
+              },
+              "body": {
+                "$id": "#/properties/comments/items/anyOf/0/properties/body",
+                "type": "string",
+                "title": "The body schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "some comment"
+                ]
+              },
+              "postId": {
+                "$id": "#/properties/comments/items/anyOf/0/properties/postId",
+                "type": "integer",
+                "title": "The postId schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  1
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "profile": {
+      "$id": "#/properties/profile",
+      "type": "object",
+      "title": "The profile schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "name": "typicode"
+        }
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$id": "#/properties/profile/properties/name",
+          "type": "string",
+          "title": "The name schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "typicode"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
