@@ -1,5 +1,6 @@
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java8.Scenario;
 import io.restassured.RestAssured;
 import utility.Utils;
 
@@ -10,14 +11,14 @@ public class CucumberHooks {
     public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m";
 
     @Before
-    public void beforeScenario()  {
-        System.out.println("Scenario Started---->>");
+    public void beforeScenario(Scenario scenario)  {
+        System.out.println(scenario.getName()+ "<<...started...>>");
         RestAssured.baseURI= Utils.getProperties("baseUrl");
     }
 
     @After
     public void afterScenario(){
-        System.out.println("<<----Scenario Ends");
+        System.out.println("<<----Scenario Ends---->>");
 
     }
 }

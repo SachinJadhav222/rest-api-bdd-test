@@ -1,0 +1,38 @@
+version: 2.1
+orbs:
+  maven: circleci/maven@0.0.12
+jobs:
+  build:
+    executor:
+      name: maven/default
+    steps:
+      - checkout
+      - maven/with-cache:
+          steps:
+            - run: mvn clean install
+  verify:
+    executor:
+      name: maven/default
+    steps:
+      - checkout
+      - maven/with-cache:
+          steps:
+            - run: mvn verify
+  test:
+    executor:
+      name: maven/default
+    steps:
+      - checkout
+      - maven/with-cache:
+          steps:
+            - run: mvn test
+workflows:
+    build-verify-test:
+      jobs:
+        - build
+        - verify:
+           requires:
+            - build
+        - test:
+           requires:
+            - verify
