@@ -1,4 +1,4 @@
-@user
+@user @api
 Feature: Validate User details from the API - (https://jsonplaceholder.typicode.com/users/1)
 
   Background: Endpoint Configuration
@@ -19,7 +19,7 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
       | phone    | 1-770-736-8031 x56442 |
       | website  | hildegard.org         |
 
-  @user @positive
+  @get @positive
   Scenario: Enter a valid userId
     Then I set the base path "/users" to URI
     When I GET a valid userId "2"
@@ -40,14 +40,16 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
     When I GET a valid userId "25"
     Then I should have the status code "404"
 
-
+  @post
   Scenario: I create User using POST
     Then I set the base path "/users" to URI
     Then I POST data in json format
     """
-      {  "name": "sac",
+      {
+        "name": "sac",
         "username": "sac444",
-        "email": "sac444@gmail.com"}
+        "email": "sac444@gmail.com"
+      }
     """
     Then I should have the status code "201"
     And content type should be in "JSON" format
@@ -56,5 +58,30 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
       | name     | sac              |
       | username | sac444           |
       | email    | sac444@gmail.com |
+
+  @put
+  Scenario: I UPDATE the User
+    Then I set the base path "/users" to URI
+    And I PUT the user "1" with following data
+      """
+      {
+        "id": 1,
+        "name": "Leanne Graham11",
+        "username": "Bret11",
+        "email": "Sincere@april.biz",
+      }
+     """
+    Then I should have the status code "200"
+
+
+  @delete
+  Scenario: I DELETE the User
+    Then I set the base path "/users" to URI
+    And I DELETE the valid user "1"
+    Then I should have the status code "200"
+
+
+
+
 
 
