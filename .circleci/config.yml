@@ -7,24 +7,21 @@ jobs:
       name: maven/default
     steps:
       - checkout
-      - mvn/with-cache:
-          steps:
+          -steps:
             - run: mvn clean install
   verify:
     executor:
       name: maven/default
     steps:
       - checkout
-      - mvn/with-cache:
-          steps:
+         -steps:
             - run: mvn verify
   test:
     executor:
       name: maven/default
     steps:
       - checkout
-      - mvn/with-cache:
-          steps:
+        -steps:
             - run: mvn test
 workflows:
     build-verify-test:
