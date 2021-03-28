@@ -10,6 +10,7 @@ Feature: Validate Posts from the API - (https://jsonplaceholder.typicode.com/pos
     When I GET the valid endpoint at "1"
     Then I should have the status code "200"
     And content type should be in "JSON" format
+    And I validate the Schema of the response
     Then The response body should match
   """
   {

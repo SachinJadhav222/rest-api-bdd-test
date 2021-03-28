@@ -86,7 +86,7 @@ public class ValidationSteps {
 
 	@Then("I POST data in json format")
 	public void iPOSTDataInJsonFormat(String requestBody) {
-		request.header("Content-Type","application/json");
+		//request.header("Content-Type","application/json");
 		request.body(requestBody);
 		//System.out.println(requestBody);
 		response=request.basePath(BASE_PATH).post();
@@ -100,7 +100,7 @@ public class ValidationSteps {
 
 	@And("I PUT the user {string} with following data")
 	public void iPUTUPDATETheUserWithFollowingData(String userID,String requestBody) {
-		request.header("Content-Type","application/json");
+		//request.header("Content-Type","application/json");
 		request.body(requestBody);
 		//System.out.println(requestBody);
 		response=request.basePath(BASE_PATH).put();
@@ -113,5 +113,16 @@ public class ValidationSteps {
 		//Assert.assertEquals(response.body().prettyPrint(),expectedBody);
 		Assert.assertSame(response.body().print(),expectedBody);
 		//System.out.println(expectedBody);
+	}
+
+	@And("I validate the Schema of the response")
+	public void iValidateTheSchemaOfTheResponse() {
+		File file = new File(Utils.getSchemaFilePath(BASE_PATH));
+		 //response.then().body(matchesJsonSchema(file));
+	}
+
+	@And("I set the request header {string} as {string}")
+	public void iSetTheRequestHeaderAs(String headType, String headValue) {
+		request.header(headType,headValue);
 	}
 }

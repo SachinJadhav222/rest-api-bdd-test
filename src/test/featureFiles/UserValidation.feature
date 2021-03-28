@@ -10,6 +10,7 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
     When I GET a valid userId "1"
     Then I should have the status code "200"
     And content type should be in "JSON" format
+    And I validate the Schema of the response
     And the body response content should be matched
       | key      | value                 |
       | id       | 1                     |
@@ -43,6 +44,7 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
   @post
   Scenario: I create User using POST
     Then I set the base path "/users" to URI
+    And I set the request header "Content-Type" as "application/json"
     Then I POST data in json format
     """
       {
@@ -62,6 +64,7 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
   @put
   Scenario: I UPDATE the User
     Then I set the base path "/users" to URI
+    And I set the request header "Content-Type" as "application/json"
     And I PUT the user "1" with following data
       """
       {

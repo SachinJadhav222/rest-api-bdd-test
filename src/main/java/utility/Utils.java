@@ -10,7 +10,7 @@ public class Utils{
     public static String getProperties(String property)  {
 
         try{
-            FileReader reader=new FileReader("src/main/resources/config.properties");
+            FileReader reader=new FileReader("src/test/resources/config.properties");
             Properties p=new Properties();
             p.load(reader);
             System.out.println(p.getProperty(property));
@@ -28,11 +28,11 @@ public class Utils{
     public static String getSchemaFilePath(String BASE_PATH){
         String jsonSchemaFilePath=null;
         if(BASE_PATH.equalsIgnoreCase("/users")){
-            jsonSchemaFilePath="src/main/resources/json-schema/users-schema.json";
+            jsonSchemaFilePath="src/test/resources/json-schema/users-schema.json";
         }else if(BASE_PATH.equalsIgnoreCase("./posts")){
-            jsonSchemaFilePath="src/main/resources/json-schema/post-schema.json";
+            jsonSchemaFilePath="src/test/resources/json-schema/post-schema.json";
         }else{
-            jsonSchemaFilePath="src/main/resources/json-schema/comments-schema.json";
+            jsonSchemaFilePath="src/test/resources/json-schema/comments-schema.json";
         }
         return jsonSchemaFilePath;
 
