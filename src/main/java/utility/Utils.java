@@ -2,9 +2,7 @@ package utility;
 
 import org.apache.log4j.Logger;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class Utils{
@@ -42,5 +40,4 @@ public class Utils{
         return jsonSchemaFilePath;
 
     }
-
 }
