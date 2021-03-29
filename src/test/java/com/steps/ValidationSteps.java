@@ -1,5 +1,6 @@
+package com.steps;
+
 import io.cucumber.datatable.DataTable;
-import io.cucumber.gherkin.internal.com.eclipsesource.json.JsonObject;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,6 +9,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import utility.Utils;
 
@@ -16,47 +18,35 @@ import java.util.List;
 import java.util.Map;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.equalTo;
 
 public class ValidationSteps {
-	
+	public  Logger logger = Logger.getLogger(ValidationSteps.class);
 	private Response response;
 	private RequestSpecification request;
 	private String BASE_PATH;
 	
-	@Given("^The endpoint URI is already configured$")
+	@Given("The endpoint URI is already configured")
 	public void theEndpointIsAlreadyConfigured() {
 		request = RestAssured.given();
 	}
 	@Then("I set the base path {string} to URI")
 	public void iSetTheBasePathToURI(String basePath) {
 		BASE_PATH=basePath;
-	}
-	
-	@When("^I GET a valid userId \"([^\"]*)\"$")
-	public void inputValidUserId(String userId) {
-		response = request.basePath(BASE_PATH).when().get("/" + userId);
-		//response.then().log().all();
+		logger.info("Base Path set: "+BASE_PATH);
 	}
 
-	@Then("^I should have the status code \"([^\"]*)\"$")
-	public void statusXCode(String statusCode) {
-		response.then().statusCode(Integer.parseInt(statusCode));
-	}
 
-	@Then("^content type should be in \"([^\"]*)\" format$")
+	@Then("content type should be in {string}format")
 	public void contentTypeFormat(String format) {
 		File file = new File(Utils.getSchemaFilePath(BASE_PATH));
 		if(format.equals("JSON")){
 			response.then().assertThat().contentType(ContentType.JSON);
-			//	.and()
-			//.body(matchesJsonSchemaInClasspath("src/main/resources/json-schema/*.json"));
-			//.body(matchesJsonSchema(file));
+
 		}
 	}
 	
-	@Then("^the body response content should be matched$")
+	@Then("the body response content should be matched")
 	public void responseBodyContentMatched(DataTable table) {
 
 		List<List<String>> data = table.asLists();
@@ -118,11 +108,32 @@ public class ValidationSteps {
 	@And("I validate the Schema of the response")
 	public void iValidateTheSchemaOfTheResponse() {
 		File file = new File(Utils.getSchemaFilePath(BASE_PATH));
-		 //response.then().body(matchesJsonSchema(file));
+		 response.then().body(matchesJsonSchema(file));
 	}
 
 	@And("I set the request header {string} as {string}")
 	public void iSetTheRequestHeaderAs(String headType, String headValue) {
 		request.header(headType,headValue);
+	}
+
+	@When("I GET a valid userId {string} from resource")
+	public void iGETAValidUserIdFromResource(String userId) {
+		response = request.basePath(BASE_PATH).when().get("/" + userId);
+	}
+
+	@Then("I should have the status code {string} displayed")
+	public void iShouldHaveTheStatusCodeDisplayed(String statusCode) {
+		response.then().statusCode(Integer.parseInt(statusCode));
+	}
+
+	@And("content type should be in {string} format")
+	public void contentTypeShouldBeInFormat(String format) {
+		File file = new File(Utils.getSchemaFilePath(BASE_PATH));
+		if(format.equals("JSON")){
+			response.then().assertThat().contentType(ContentType.JSON);
+			//	.and()
+			//.body(matchesJsonSchemaInClasspath("src/main/resources/json-schema/*.json"));
+			//.body(matchesJsonSchema(file));
+		}
 	}
 }

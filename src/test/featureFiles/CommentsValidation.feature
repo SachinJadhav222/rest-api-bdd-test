@@ -8,7 +8,7 @@ Feature: Validate Comments from the API - (https://jsonplaceholder.typicode.com/
   Scenario: I get the Valid Comments
     Then I set the base path "/comments" to URI
     When I GET the valid endpoint at "1"
-    Then I should have the status code "200"
+    Then I should have the status code "200" displayed
     And content type should be in "JSON" format
     And I validate the Schema of the response
     And the body response content should be matched

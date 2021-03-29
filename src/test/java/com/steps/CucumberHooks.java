@@ -1,6 +1,8 @@
+package com.steps;
+
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java8.Scenario;
+import io.cucumber.java.Scenario;
 import io.restassured.RestAssured;
 import utility.Utils;
 

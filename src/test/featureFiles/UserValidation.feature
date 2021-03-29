@@ -7,8 +7,8 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
   @user @positive
   Scenario: Enter a valid userId
     Then I set the base path "/users" to URI
-    When I GET a valid userId "1"
-    Then I should have the status code "200"
+    When I GET a valid userId "1" from resource
+    Then I should have the status code "200" displayed
     And content type should be in "JSON" format
     And I validate the Schema of the response
     And the body response content should be matched
@@ -23,8 +23,8 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
   @get @positive
   Scenario: Enter a valid userId
     Then I set the base path "/users" to URI
-    When I GET a valid userId "2"
-    Then I should have the status code "200"
+    When I GET a valid userId "2" from resource
+    Then I should have the status code "200" displayed
     And content type should be in "JSON" format
     And the body response content should be matched
       | key      | value               |
@@ -38,8 +38,8 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
   @user @negative
   Scenario: Enter an invalid UserId
     Then I set the base path "/users" to URI
-    When I GET a valid userId "25"
-    Then I should have the status code "404"
+    When I GET a valid userId "155" from resource
+    Then I should have the status code "404" displayed
 
   @post
   Scenario: I create User using POST
@@ -53,7 +53,7 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
         "email": "sac444@gmail.com"
       }
     """
-    Then I should have the status code "201"
+    Then  I should have the status code "201" displayed
     And content type should be in "JSON" format
     And the body response content should be matched
       | key      | value            |
@@ -68,20 +68,20 @@ Feature: Validate User details from the API - (https://jsonplaceholder.typicode.
     And I PUT the user "1" with following data
       """
       {
-        "id": 1,
-        "name": "Leanne Graham11",
-        "username": "Bret11",
-        "email": "Sincere@april.biz",
+        "id": 11,
+        "name": "Leanne Graham111",
+        "username": "Bret111",
+        "email": "111Sincere@april.biz",
       }
      """
-    Then I should have the status code "200"
+    Then I should have the status code "200" displayed
 
 
   @delete
   Scenario: I DELETE the User
     Then I set the base path "/users" to URI
     And I DELETE the valid user "1"
-    Then I should have the status code "200"
+    Then I should have the status code "200" displayed
 
 
 

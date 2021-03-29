@@ -1,3 +1,5 @@
+package com.testRunners;
+
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -5,7 +7,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src/test/FeatureFiles"},
-        glue = {"src/test/steps"},
+       glue = {"src/test/java/com/steps"},
+
         plugin ={"pretty","html:target/reports/test-report.html"}
        // dryRun = true,
        // monochrome = true
