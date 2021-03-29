@@ -12,7 +12,7 @@ public class Utils{
     public static String getProperties(String property)  {
 
         try{
-            FileReader reader=new FileReader("src/test/resources/config.properties");
+            FileReader reader=new FileReader("src/test/resources/config.properties")
             Properties p=new Properties();
             p.load(reader);
             System.out.println(p.getProperty(property));
