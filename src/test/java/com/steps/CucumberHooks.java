@@ -10,6 +10,8 @@ import utility.Utils;
 public class CucumberHooks {
     public static final String TEXT_RESET = "\u001B[0m";
     public static final String TEXT_CYAN = "\u001B[36m";
+    public static final String TEXT_RED = "\u001B[31m";
+    public static final String TEXT_GREEN = "\u001B[32m";
 
 
 
@@ -20,7 +22,14 @@ public class CucumberHooks {
     }
 
     @After
-    public void afterScenario(){
-        System.out.println("<<----Scenario Ends---->>");
+    public void afterScenario(Scenario scenario){
+        String status= scenario.getStatus().toString();
+        String sceName=scenario.getName();
+        if(status.equals("PASSED")){
+            System.out.println(TEXT_GREEN+"Scenario: "+sceName+" : "+status);
+        }else{
+            System.out.println(TEXT_RED+"Scenario: "+sceName+" : "+status);
+        }
+
     }
 }
