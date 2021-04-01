@@ -20,7 +20,7 @@ public class RandomTestData {
         String generatedString= RandomStringUtils.randomAlphabetic(3);
         return ("John"+generatedString);
     }
-    public static String gePassword(){
+    public static String getPassword(){
         String generatedString= RandomStringUtils.randomAlphabetic(3);
         return (generatedString);
     }
