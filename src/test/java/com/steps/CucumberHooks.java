@@ -15,13 +15,13 @@ public class CucumberHooks {
 
 
 
-    @Before
+    @Before("@api")
     public void beforeScenario(Scenario scenario)  {
         System.out.println(TEXT_CYAN+"SCENARIO-->>"+ scenario.getName()+ TEXT_RESET);
         RestAssured.baseURI= Utils.getProperties("baseUrl");
     }
 
-    @After
+    @After("@api")
     public void afterScenario(Scenario scenario){
         String status= scenario.getStatus().toString();
         String sceName=scenario.getName();

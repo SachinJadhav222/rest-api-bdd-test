@@ -180,7 +180,7 @@
                 <version>2.20.1</version>
                 <configuration>
                     <includes>
-                        <include>**/com.testRunners.CucumberTestRunner*.java</include>
+                        <include>**/com.testRunners.ApiCucumberTestRunner*.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
